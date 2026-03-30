@@ -79,17 +79,6 @@ raw_Hits@5 = 0.9974592006254276
 raw_MR = 1.0975276067624353
 raw_MRR = 0.9737347262088496
 
-
-
-# KG-BERT: BERT for Knowledge Graph Completion
-
-The repository is modified from [pytorch-pretrained-BERT](https://github.com/huggingface/pytorch-pretrained-BERT) and tested on Python 3.5+.
-
-
-## Installing requirement packages
-
-```bash
-pip install -r requirements.txt
 ```
 
 ## Data
