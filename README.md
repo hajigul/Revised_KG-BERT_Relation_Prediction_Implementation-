@@ -1,3 +1,69 @@
+## 📊 Relation Prediction using Revised KG-BERT
+
+This work presents a **revised implementation of KG-BERT** for the task of **relation prediction** in Knowledge Graph Completion (KGC).  
+The model leverages transformer-based contextual embeddings to classify the relation between a given head–tail entity pair.
+
+### 🔹 Evaluation Protocol
+To comprehensively evaluate the model performance, we adopt standard KGC metrics:
+
+- **Mean Rank (MR)** ↓ (lower is better)  
+- **Mean Reciprocal Rank (MRR)** ↑  
+- **Hits@K (K = 1, 3, 5, 10)** ↑  
+
+Both **Raw** and **Filtered** evaluation settings are reported:
+- **Raw**: Considers all candidate relations  
+- **Filtered**: Removes valid competing triples from ranking (more accurate)
+
+---
+
+### 🔹 Dataset Summary
+- **Test Triples**: 20,466  
+- **Number of Relations**: 237  
+
+---
+
+### 🔹 Results
+
+| Metric            | Raw     | Filtered |
+|------------------|--------:|---------:|
+| **Mean Rank (MR)** | 1.0975 | 1.0872 |
+| **MRR**            | 0.9737 | 0.9785 |
+| **Hits@1**         | 0.9540 | 0.9631 |
+| **Hits@3**         | 0.9937 | 0.9938 |
+| **Hits@5**         | 0.9975 | 0.9975 |
+| **Hits@10**        | 0.9990 | 0.9990 |
+
+---
+
+### 🔹 Key Observations
+- The model achieves **very high ranking performance**, with **MRR ≈ 0.98** in the filtered setting.
+- **Hits@10 reaches ~99.9%**, indicating near-perfect top-10 prediction accuracy.
+- The small gap between **Raw and Filtered results** suggests strong robustness with minimal ranking noise.
+
+---
+
+### 🔹 Detailed Metrics
+
+```text
+acc = 0.9540213036255253
+eval_loss = 0.14142201337963342
+filtered_Hits@1 = 0.9631095475422652
+filtered_Hits@10 = 0.9990227694713183
+filtered_Hits@3 = 0.9938434476693052
+filtered_Hits@5 = 0.9975080621518616
+filtered_MR = 1.0871689631584092
+filtered_MRR = 0.9784580885333554
+global_step = 21260
+loss = 0.28156598808939515
+raw_Hits@1 = 0.9540213036255253
+raw_Hits@10 = 0.9990227694713183
+raw_Hits@3 = 0.9936968630900029
+raw_Hits@5 = 0.9974592006254276
+raw_MR = 1.0975276067624353
+raw_MRR = 0.9737347262088496
+
+
+
 # KG-BERT: BERT for Knowledge Graph Completion
 
 The repository is modified from [pytorch-pretrained-BERT](https://github.com/huggingface/pytorch-pretrained-BERT) and tested on Python 3.5+.
