@@ -1,4 +1,4 @@
-## 📊 Relation Prediction using Revised KG-BERT
+## Relation Prediction using Revised KG-BERT
 
 This work presents a **revised implementation of KG-BERT** for the task of **relation prediction** in Knowledge Graph Completion (KGC).  
 The model leverages transformer-based contextual embeddings to classify the relation between a given head–tail entity pair.
@@ -22,6 +22,26 @@ Both **Raw** and **Filtered** evaluation settings are reported:
 
 ---
 
+
+
+python run_bert_relation_prediction.py \
+    --task_name kg \
+    --do_train \
+    --do_eval \
+    --do_predict \
+    --data_dir ./data/FB15K-237 \
+    --bert_model bert-base-cased \
+    --max_seq_length 25 \
+    --train_batch_size 32 \
+    --learning_rate 5e-5 \
+    --num_train_epochs 20.0 \
+    --output_dir ./output_FB15K-237/ \
+    --gradient_accumulation_steps 1 \
+    --eval_batch_size 512 \
+    --n_gpu 2
+
+
+
 ### 🔹 Results
 
 | Metric            | Raw     | Filtered |
@@ -35,10 +55,7 @@ Both **Raw** and **Filtered** evaluation settings are reported:
 
 ---
 
-### 🔹 Key Observations
-- The model achieves **very high ranking performance**, with **MRR ≈ 0.98** in the filtered setting.
-- **Hits@10 reaches ~99.9%**, indicating near-perfect top-10 prediction accuracy.
-- The small gap between **Raw and Filtered results** suggests strong robustness with minimal ranking noise.
+
 
 ---
 
@@ -127,3 +144,8 @@ python3 run_bert_link_prediction.py --task_name kg  --do_train  --do_eval --do_p
 ```shell
 python3 run_bert_link_prediction.py --task_name kg  --do_train  --do_eval --do_predict --data_dir ./data/FB15k-237 --bert_model bert-base-cased --max_seq_length 150 --train_batch_size 32 --learning_rate 5e-5 --num_train_epochs 5.0 --output_dir ./output_FB15k-237/  --gradient_accumulation_steps 1 --eval_batch_size 1500
 ```
+
+
+
+
+> 🔗 **Reference Implementation**: This work builds upon the original KG-BERT codebase available at https://github.com/yao8839836/kg-bert
